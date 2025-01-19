@@ -56,7 +56,7 @@ namespace EsemkaEsportApp
         private bool AuthenticateUser(string username, string password)
         {
             bool isAuthenticated = false;
-
+             
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
