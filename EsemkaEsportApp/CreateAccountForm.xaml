@@ -8,21 +8,41 @@
         Title="CreateAccountForm" Height="400" Width="600" Background="#FF190345" ResizeMode="NoResize">
     <Grid>
         <Image Source="/Images/Esemka-Esport-Desktop.png"/>
-        <GroupBox Header="Your Information" Margin="66,58,66,58" Background="#FF190345" Foreground="White" FontSize="20" FontWeight="Bold"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="92,102,0,0" VerticalAlignment="Top" Foreground="White" />
-        <RadioButton Content="Male" Foreground="White" HorizontalAlignment="Left" Margin="203,134,0,236"/>
-        <RadioButton Content="Female" Foreground="White" HorizontalAlignment="Left" Margin="255,134,0,236"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Margin="92,128,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="203,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="#FF49376D" Height="22" BorderBrush="#FF6C549B" Foreground="White" BorderThickness="1,1,1,1"/>
-        <Label Content="Birthdate" HorizontalAlignment="Left" Margin="92,154,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="92,186,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="#FF49376D" Height="22" BorderBrush="#FF6C549B" Foreground="White" BorderThickness="1,1,1,1" Margin="203,189,0,0"/>
-        <Label Content="Retype Password" HorizontalAlignment="Left" Margin="92,222,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Background="#FF49376D" Height="22" BorderBrush="#FF6C549B" Foreground="White" BorderThickness="1,1,1,1" Margin="203,224,0,0"/>
-        <Button Content="Register" HorizontalAlignment="Left" Margin="431,275,0,0" VerticalAlignment="Top" Width="73" BorderBrush="{x:Null}" Background="#FF49376D" Foreground="White" Height="23"/>
-        <DatePicker HorizontalAlignment="Left" Height="22" Width="301" Margin="203,158,0,304"/>
-        <Label Content="Already have an account? " HorizontalAlignment="Left" Margin="215,345,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White"/>
-        <Button Content="Login" Click="ToLoginForm_Click" HorizontalAlignment="Left" Margin="355,348,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFBCABDF" BorderBrush="{x:Null}"/>
-    </Grid>
+        <GroupBox Header="Your Information" Background="#190345" Foreground="White" FontSize="30" FontWeight="SemiBold" Margin="28" Padding="4">
+            <Grid>
+                <!-- username -->
+                <Label Content="Username" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="30" Margin="185,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
 
+                <!-- gender -->
+                <Label Content="Gender" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="185,43,0,0" VerticalAlignment="Top">
+                    <RadioButton x:Name="rbMale" Content="Male" FontSize="20" Foreground="White" Margin="0,0,18,0" Width="84" />
+                    <RadioButton x:Name="rbFemale" Content="Female"  FontSize="20" Foreground="White" />
+                </StackPanel>
+
+                <!-- birthdate -->
+                <Label Content="Birthdate" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <DatePicker HorizontalAlignment="Right" Margin="0,82,10,0" VerticalAlignment="Top" Height="30" Width="326"/>
+
+                <!-- password -->
+                <Label Content="Password" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="30" Margin="188,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
+
+                <!-- retype password -->
+                <Label Content="Retype Password" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <TextBox x:Name="tbRetypePassword" HorizontalAlignment="Left" Height="30" Margin="188,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1" />
+
+                <!-- register button -->
+                <Button Content="Register" HorizontalAlignment="Left" Margin="383,225,0,0" VerticalAlignment="Top" Width="131" Height="30" FontSize="20" Background="#FF4A2D83" Foreground="White" />
+
+                <!-- redirect to login form -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <Label Content="Already have an account?" FontSize="14" Foreground="White"/>
+                    <Button x:Name="btnLogin" Content="Login" FontSize="14" Background="{x:Null}" Foreground="#FFBCABDF" BorderBrush="{x:Null}" Click="ToLoginForm_Click" />
+                </StackPanel>
+                
+            </Grid>
+        </GroupBox>
+    </Grid>
 </Window>
