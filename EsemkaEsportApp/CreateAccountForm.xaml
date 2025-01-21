@@ -5,41 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EsemkaEsportApp"
         mc:Ignorable="d"
-        Title="CreateAccountForm" Height="400" Width="600" Background="#FF190345" ResizeMode="NoResize">
+        Title="CreateAccountForm" Height="400" Width="600" Background="#FF190345" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Source="/Images/Esemka-Esport-Desktop.png"/>
-        <GroupBox Header="Your Information" Background="#190345" Foreground="White" FontSize="30" FontWeight="SemiBold" Margin="28" Padding="4">
+        <GroupBox Header="Your Information" Background="#190345" Foreground="White" FontSize="22" Margin="28" Padding="4">
             <Grid>
                 <!-- username -->
-                <Label Content="Username" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="30" Margin="185,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
+                <Label Content="Username" HorizontalAlignment="Left" Margin="10,-3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="25" Margin="185,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="12" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
 
                 <!-- gender -->
-                <Label Content="Gender" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                <Label Content="Gender" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="185,43,0,0" VerticalAlignment="Top">
-                    <RadioButton x:Name="rbMale" Content="Male" FontSize="20" Foreground="White" Margin="0,0,18,0" Width="84" />
-                    <RadioButton x:Name="rbFemale" Content="Female"  FontSize="20" Foreground="White" />
+                    <RadioButton x:Name="rbMale" Content="Male" FontSize="15" Foreground="White" Margin="0,0,18,0" Width="84" />
+                    <RadioButton x:Name="rbFemale" Content="Female"  FontSize="15" Foreground="White" />
                 </StackPanel>
 
                 <!-- birthdate -->
-                <Label Content="Birthdate" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
-                <DatePicker HorizontalAlignment="Right" Margin="0,82,10,0" VerticalAlignment="Top" Height="30" Width="326"/>
+                <Label Content="Birthdate" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                <DatePicker x:Name="dpBirthdate" HorizontalAlignment="Right" Margin="0,82,10,0" VerticalAlignment="Top" Height="25" Width="326" FontSize="12"/>
 
                 <!-- password -->
-                <Label Content="Password" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="30" Margin="188,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
+                <Label Content="Password" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="25" Margin="188,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="12" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1"/>
 
                 <!-- retype password -->
-                <Label Content="Retype Password" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="tbRetypePassword" HorizontalAlignment="Left" Height="30" Margin="188,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="20" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1" />
+                <Label Content="Retype Password" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                <TextBox x:Name="tbRetypePassword" HorizontalAlignment="Left" Height="25" Margin="188,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" FontSize="12" FontWeight="SemiBold" Background="#FF4A2D83" Foreground="White" BorderBrush="White" BorderThickness="1" />
 
                 <!-- register button -->
-                <Button Content="Register" HorizontalAlignment="Left" Margin="383,225,0,0" VerticalAlignment="Top" Width="131" Height="30" FontSize="20" Background="#FF4A2D83" Foreground="White" />
+                <Button Content="Register" Click="RegisterButton_Click" HorizontalAlignment="Right" Margin="0,225,12,0" VerticalAlignment="Top" Width="120" Height="25" FontSize="15" Background="#FF4A2D83" Foreground="White" />
 
                 <!-- redirect to login form -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <Label Content="Already have an account?" FontSize="14" Foreground="White"/>
-                    <Button x:Name="btnLogin" Content="Login" FontSize="14" Background="{x:Null}" Foreground="#FFBCABDF" BorderBrush="{x:Null}" Click="ToLoginForm_Click" />
+                    <Label Content="Already have an account?" FontSize="10" Foreground="White"/>
+                    <Button x:Name="btnLogin" Content="Login" FontSize="10" Background="{x:Null}" Foreground="#FFBCABDF" BorderBrush="{x:Null}" Click="ToLoginForm_Click" />
                 </StackPanel>
                 
             </Grid>
