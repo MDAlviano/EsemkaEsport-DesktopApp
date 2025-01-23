@@ -10,9 +10,15 @@
 
         <Label Content="Schedule" FontSize="28" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
         <StackPanel Orientation="Horizontal" Margin="0,25,35,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Image Source="/Images/Team.png" Height="38" Margin="0,0,10,0" />
-            <Image Source="/Images/Player.png" Height="38" Margin="0,0,10,0"/>
-            <Image Source="/Images/Logout.png" Height="38"/>
+            <Button Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="/Images/Team.png" />
+            </Button>
+            <Button  Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="/Images/Player.png"/>
+            </Button>
+            <Button Click="LogoutButton_Click" Height="38" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Image Source="/Images/Logout.png" />
+            </Button>
         </StackPanel>
 
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="35,94,35,97"/>
