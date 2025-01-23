@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EsemkaEsportApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="450" Width="870" WindowStartupLocation="CenterScreen" Background="#190345">
     <Grid>
-        
+
+        <Label Content="Schedule" FontSize="28" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
+        <Image Source="/Images/Logout.png" HorizontalAlignment="Right" Height="40" Margin="0,28,35,0" VerticalAlignment="Top" RenderTransformOrigin="0.425,1.151"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="35,94,35,97"/>
+        <Button Content="My Tickets" Click="Check_Click" Background="#FF49376D" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,366,35,0" Padding="35,8" VerticalAlignment="Top"/>
+
+
     </Grid>
 </Window>

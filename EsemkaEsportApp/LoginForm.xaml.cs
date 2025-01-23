@@ -43,9 +43,42 @@ namespace EsemkaEsportApp
 
             if (AuthenticateUser(username, password))
             {
-                var createAccountForm = new CreateAccountForm();
-                createAccountForm.Show();
-                this.Close();
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        string roleQuery = "SELECT role FROM [user] WHERE username=@username";
+
+                        using (SqlCommand command = new SqlCommand(roleQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@username", username);
+
+                            int userRole = Convert.ToInt32(command.ExecuteScalar());
+
+                            switch(userRole)
+                            {
+                                case 0:
+                                    var scheduleForm = new ScheduleForm();
+                                    scheduleForm.Show();
+                                    this.Close();
+                                    break;
+                                case 1:
+                                    var mainWindow = new MainWindow();
+                                    mainWindow.Show();
+                                    this.Close();
+                                    break;
+                                default:
+                                    MessageBox.Show("Akun tidak tersedia!", "Authtentication Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             } else
             {
                 MessageBox.Show("Username atau password salah.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
