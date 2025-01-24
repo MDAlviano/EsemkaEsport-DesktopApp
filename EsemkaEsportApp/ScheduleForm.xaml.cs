@@ -23,7 +23,7 @@ namespace EsemkaEsportApp
 
         private readonly string connectionString = @"Server=ALVIN\ALVINTORIALSQL;Database=EsemkaEsport;Trusted_Connection=True;";
 
-        public class ScheduleData
+        public class ScheduleData   
         {
             public string Match { get; set; }
             public string Time { get; set; }

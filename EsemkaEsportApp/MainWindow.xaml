@@ -37,7 +37,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="My Tickets" Click="Check_Click" Background="#FF49376D" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,366,35,0" Padding="35,8" VerticalAlignment="Top"/>
+        <Button Content="My Tickets" Click="MyTickets_Click" Background="#FF49376D" Foreground="White" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,366,35,0" Padding="35,8" VerticalAlignment="Top"/>
 
 
     </Grid>

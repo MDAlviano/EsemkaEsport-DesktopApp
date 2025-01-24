@@ -77,11 +77,23 @@ namespace EsemkaEsportApp
             MessageBox.Show("Clicked!", "Test", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        private void MyTickets_Click(object sender, RoutedEventArgs e)
+        {
+            var myTicketsForm = new MyTicketForm();
+            myTicketsForm.Show();
+            this.Close();
+        }
+
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             var loginForm = new LoginForm();
             loginForm.Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
