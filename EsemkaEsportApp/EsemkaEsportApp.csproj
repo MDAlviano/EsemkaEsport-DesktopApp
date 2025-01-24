@@ -55,9 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddScheduleForm.xaml.cs">
+      <DependentUpon>AddScheduleForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyTicketForm.xaml.cs">
+      <DependentUpon>MyTicketForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleForm.xaml.cs">
       <DependentUpon>ScheduleForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddScheduleForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateAccountForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +94,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MyTicketForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ScheduleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

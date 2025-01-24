@@ -46,7 +46,7 @@ namespace EsemkaEsportApp
                 {
                     connection.Open();
 
-                    string query = @"SELECT s.id, ht.name + ' vs ' + at.name AS Match, FORMAT(s.time, 'dddd, dd MM yyyy (HH:mm)') AS FormattedName FROM [schedule] s JOIN [team] ht ON s.home_team_id = ht.id JOIN [team] at ON s.away_team_id = at.id WHERE s.deleted_at IS NULL AND s.time > GETDATE() ORDER BY s.time";
+                    string query = @"SELECT s.id, ht.name + ' vs ' + at.name AS Match, FORMAT(s.time, 'dddd, dd MMMM yyyy (HH:mm)') AS FormattedName FROM [schedule] s JOIN [team] ht ON s.home_team_id = ht.id JOIN [team] at ON s.away_team_id = at.id WHERE s.deleted_at IS NULL AND s.time > GETDATE() ORDER BY s.time";
 
                     using (SqlCommand command = new SqlCommand(query,connection))
                     {
