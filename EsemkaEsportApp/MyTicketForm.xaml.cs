@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace EsemkaEsportApp
         public MyTicketForm()
         {
             InitializeComponent();
+            LoadScheduleDetailData();
         }
 
         public class ScheduleDataDetail
@@ -38,36 +40,62 @@ namespace EsemkaEsportApp
 
         private void LoadScheduleDetailData()
         {
-            try
+            string query = @"SELECT TOP (1000) [id]
+      ,[schedule_id]
+      ,[user_id]
+      ,[total_ticket]
+      ,[created_at]
+      ,[updated_at]
+      ,[deleted_at]
+  FROM [EsemkaEsport].[dbo].[schedule_detail]";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                List<ScheduleDataDetail> scheduleDatas = new List<ScheduleDataDetail>();
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                conn.Open();
+                using(SqlCommand command = new SqlCommand(query, conn))
                 {
-                    connection.Open();
-
-                    string query = @"";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                scheduleDatas.Add(new ScheduleDataDetail
-                                {
-
-                                });
-                            }
-                        }
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        scheduleDetailDataGrid.ItemsSource = dataTable.DefaultView;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
         }
+
+        //private void LoadScheduleDetailData()
+        //{
+        //    try
+        //    {
+        //        List<ScheduleDataDetail> scheduleDatas = new List<ScheduleDataDetail>();
+
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            connection.Open();
+
+        //            string query = @"";
+
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        scheduleDatas.Add(new ScheduleDataDetail
+        //                        {
+
+        //                        });
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error: {ex.Message}");
+        //    }
+        //}
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = new MainWindow();

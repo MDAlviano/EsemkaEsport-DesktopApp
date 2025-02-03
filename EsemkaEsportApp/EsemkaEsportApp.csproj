@@ -64,6 +64,12 @@
     <Compile Include="ScheduleForm.xaml.cs">
       <DependentUpon>ScheduleForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TeamForm.xaml.cs">
+      <DependentUpon>TeamForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransferPlayerForm.xaml.cs">
+      <DependentUpon>TransferPlayerForm.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddScheduleForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +108,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TeamForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransferPlayerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -136,6 +150,10 @@
   <ItemGroup>
     <Resource Include="Images\Esemka-Esport-Desktop.png" />
     <Resource Include="Images\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Left.png" />
+    <Resource Include="Images\Right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

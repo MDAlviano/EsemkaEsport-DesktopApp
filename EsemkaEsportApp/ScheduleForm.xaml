@@ -10,10 +10,10 @@
 
         <Label Content="Schedule" FontSize="28" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
         <StackPanel Orientation="Horizontal" Margin="0,25,35,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button Click="ToTeamForm_Click" Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="/Images/Team.png" />
             </Button>
-            <Button  Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button Click="ToTransferPlayer_Click"  Height="38" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}">
                 <Image Source="/Images/Player.png"/>
             </Button>
             <Button Click="LogoutButton_Click" Height="38" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -22,23 +22,7 @@
         </StackPanel>
 
         <!-- datagrid -->
-        <DataGrid x:Name="adminScheduleDataGrid" RowBackground="#FF49376D" AlternatingRowBackground="#FF49376D" AutoGenerateColumns="False" IsReadOnly="True" Margin="35,95">
-            <DataGrid.Resources>
-                <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#190345"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Padding" Value="10"/>
-                    <Setter Property="FontSize" Value="15"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.ColumnHeaderStyle>
-                <StaticResource ResourceKey="HeaderStyle"/>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Match" Binding="{Binding Match}" Width="*"/>
-                <DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="adminSchedulDataGrid" Width="800" Height="230"/>
         <Button Content="Create New" Click="CreateNewSchedule_Click" Background="#FF49376D" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="0,370,35,0" Padding="35,8" VerticalAlignment="Top"/>
 
     </Grid>

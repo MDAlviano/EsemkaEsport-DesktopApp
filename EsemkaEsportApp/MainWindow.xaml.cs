@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+
+using System.Data;
 
 namespace EsemkaEsportApp
 {
@@ -34,43 +37,80 @@ namespace EsemkaEsportApp
         public MainWindow()
         {
             InitializeComponent();
+            LoadScheduleData();
         }
 
         private void LoadScheduleData()
         {
-            try
+            string query = @"SELECT TOP (1000) [id]
+      ,[home_team_id]
+      ,[away_team_id]
+      ,[time]
+      ,[created_at]
+      ,[updated_at]
+      ,[deleted_at]
+  FROM [EsemkaEsport].[dbo].[schedule]";
+
+            using(SqlConnection conn = new SqlConnection(connectionString))
             {
-                List<ScheduleData> schedules = new List<ScheduleData>();
+                conn.Open();
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
-                    connection.Open();
-
-                    string query = @"SELECT s.id, ht.name + ' vs ' + at.name AS Match, FORMAT(s.time, 'dddd, dd MMMM yyyy (HH:mm)') AS FormattedName FROM [schedule] s JOIN [team] ht ON s.home_team_id = ht.id JOIN [team] at ON s.away_team_id = at.id WHERE s.deleted_at IS NULL AND s.time > GETDATE() ORDER BY s.time";
-
-                    using (SqlCommand command = new SqlCommand(query,connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                schedules.Add(new ScheduleData
-                                {
-                                    ScheduleId = reader.GetInt32(0),
-                                    Match = reader.GetString(1),
-                                    Time = reader.GetString(2)
-                                });
-                            }
-                        }
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        scheduleDataGrid.ItemsSource = dataTable.DefaultView;
                     }
                 }
-
-                scheduleDataGrid.ItemsSource = schedules;
-            } catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+  //      private void LoadScheduleData()
+  //      {
+  //          try
+  //          {
+  //              List<ScheduleData> schedules = new List<ScheduleData>();
+
+  //              using (SqlConnection connection = new SqlConnection(connectionString))
+  //              {
+  //                  connection.Open();
+
+  //                  string query = @"SELECT TOP (1000) [id]
+  //    ,[home_team_id]
+  //    ,[away_team_id]
+  //    ,[time]
+  //    ,[created_at]
+  //    ,[updated_at]
+  //    ,[deleted_at]
+  //FROM [EsemkaEsport].[dbo].[schedule]";
+
+  //                  using (SqlCommand command = new SqlCommand(query,connection))
+  //                  {
+  //                      using (SqlDataReader reader = command.ExecuteReader())
+  //                      {
+  //                          while (reader.Read())
+  //                          {
+  //                              schedules.Add(new ScheduleData
+  //                              {
+  //                                  ScheduleId = reader.GetInt32(0),
+  //                                  Match = reader.GetString(1),
+  //                                  Time = reader.GetString(2)
+  //                              });
+  //                          }
+  //                      }
+  //                  }
+  //              }
+
+  //              Console.WriteLine(schedules);
+
+  //              scheduleDataGrid.ItemsSource = schedules;
+  //          } catch (Exception ex)
+  //          {
+  //              MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+  //          }
+  //      }
 
         private void Check_Click(object sender, RoutedEventArgs e)
         {

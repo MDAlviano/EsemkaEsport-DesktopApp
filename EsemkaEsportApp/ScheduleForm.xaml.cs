@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -33,43 +34,85 @@ namespace EsemkaEsportApp
         public ScheduleForm()
         {
             InitializeComponent();
+            LoadScheduleData();
         }
 
         private void LoadScheduleData()
         {
-            try
+            string query = @"SELECT TOP (1000) [id]
+      ,[schedule_id]
+      ,[user_id]
+      ,[total_ticket]
+      ,[created_at]
+      ,[updated_at]
+      ,[deleted_at]
+  FROM [EsemkaEsport].[dbo].[schedule_detail]";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                List<ScheduleData> schedules = new List<ScheduleData>();
-
-                using(SqlConnection connection = new SqlConnection(connectionString))
+                conn.Open();
+                using(SqlCommand sqlCommand = new SqlCommand(query, conn))
                 {
-                    connection.Open();
-
-                    string query = @"SELECT s.id, ht.name + ' vs ' + at.name AS Match, FORMAT(s.time, 'dddd, dd MMMM yyyy (HH:mm)') AS FormattedName FROM [schedule] s JOIN [team] ht ON s.home_team_id = ht.id JOIN [team] at ON s.away_team_id = at.id WHERE s.deleted_at IS NULL AND s.time > GETDATE() ORDER BY s.time";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                schedules.Add(new ScheduleData
-                                {
-                                    ScheduleId = reader.GetInt32(0),
-                                    Match = reader.GetString(1),
-                                    Time = reader.GetString(2)
-                                });
-                            }
-                        }
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        adminSchedulDataGrid.ItemsSource = dataTable.DefaultView;
                     }
                 }
-                
-                adminScheduleDataGrid.ItemsSource = schedules;
-            } catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
+
+        public void ToTransferPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            var transferForm = new TransferPlayerForm();
+            transferForm.Show();
+            this.Close();
+        }
+
+        public void ToTeamForm_Click(object sender, RoutedEventArgs e)
+        {
+            var teamForm = new TeamForm();
+            teamForm.Show();
+            this.Close();
+        }
+
+        //private void LoadScheduleData()
+        //{
+        //    try
+        //    {
+        //        List<ScheduleData> schedules = new List<ScheduleData>();
+
+        //        using(SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            connection.Open();
+
+        //            string query = @"SELECT s.id, ht.name + ' vs ' + at.name AS Match, FORMAT(s.time, 'dddd, dd MMMM yyyy (HH:mm)') AS FormattedName FROM [schedule] s JOIN [team] ht ON s.home_team_id = ht.id JOIN [team] at ON s.away_team_id = at.id WHERE s.deleted_at IS NULL AND s.time > GETDATE() ORDER BY s.time";
+
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        schedules.Add(new ScheduleData
+        //                        {
+        //                            ScheduleId = reader.GetInt32(0),
+        //                            Match = reader.GetString(1),
+        //                            Time = reader.GetString(2)
+        //                        });
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        adminScheduleDataGrid.ItemsSource = schedules;
+        //    } catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
 
         private void CreateNewSchedule_Click(object sender, RoutedEventArgs e)
         {

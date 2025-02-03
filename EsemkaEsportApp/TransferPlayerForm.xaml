@@ -1,0 +1,31 @@
+﻿<Window x:Class="EsemkaEsportApp.TransferPlayerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EsemkaEsportApp"
+        mc:Ignorable="d"
+        Title="TransferPlayerForm" Height="400" Width="600" Background="#FF190345" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Button Click="Back_Click" Content="Back" Foreground="White" Background="#FF49376D" BorderBrush="{x:Null}" Height="24" Width="68" Margin="20, 0"/>
+            <Label Content="Transfer Player" FontSize="24" Foreground="White" FontWeight="Medium" RenderTransformOrigin="1.57,0.668"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="24,0,0,0">
+            <Label Content="Free Player" HorizontalAlignment="Center" FontSize="24" Foreground="White" FontWeight="Medium" RenderTransformOrigin="1.57,0.668"/>
+            <ListBox x:Name="lbPlayers" Background="#FF49376D" Foreground="White" BorderBrush="{x:Null}" Margin="0, 20" Height="200" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="100">
+            <Button Click="Right_Click" Background="{x:Null}" BorderBrush="{x:Null}" Width="84" Margin="0,20">
+                <Image Source="/Images/Right.png" />
+            </Button>
+            <Button Click="Left_Click" Background="{x:Null}" BorderBrush="{x:Null}" Width="84">
+                <Image Source="/Images/Left.png" />
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" Margin="0,0,24,0">
+            <Menu Height="40"/>
+            <ListBox x:Name="lbTeams" Background="#FF49376D" Foreground="White" BorderBrush="{x:Null}" Margin="0, 20" Height="200" Width="200"/>
+        </StackPanel>
+    </Grid>
+</Window>

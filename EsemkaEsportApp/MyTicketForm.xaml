@@ -12,33 +12,7 @@
         <Label Content="Schedule" FontSize="28" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
         
         <!-- datagrid_detail -->
-        <DataGrid x:Name="scheduleDetailDataGrid" RowBackground="#FF49376D" AlternatingRowBackground="#FF49376D" AutoGenerateColumns="False" IsReadOnly="True" Margin="35,95,35,40">
-            <DataGrid.Resources>
-                <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#190345"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Padding" Value="10"/>
-                    <Setter Property="FontSize" Value="15"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.ColumnHeaderStyle>
-                <StaticResource ResourceKey="HeaderStyle"/>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Match" Binding="{Binding Match}" Width="*"/>
-                <DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="*"/>
-                <DataGridTextColumn Header="TotalTicket" Binding="{Binding TotalTicket}" Width="*"/>
-                <DataGridTemplateColumn Header="" Width="Auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="BackButton_Click" Background="{x:Null}" Foreground="White" BorderThickness="0" BorderBrush="{x:Null}" Margin="5,0">
-                                <Label Content="Print"/>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="scheduleDetailDataGrid" Width="790" Height="270"/>
 
     </Grid>
 </Window>
