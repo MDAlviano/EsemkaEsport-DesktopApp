@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EsemkaEsportApp"
         mc:Ignorable="d"
         Title="CreateAccountForm" Height="400" Width="600" Background="#FF190345" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid> 
         <Image Source="/Images/Esemka-Esport-Desktop.png"/>
         <GroupBox Header="Your Information" Background="#190345" Foreground="White" FontSize="22" Margin="28" Padding="4">
             <Grid>
